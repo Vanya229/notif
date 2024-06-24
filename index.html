@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body
+        {
+            background: transparent;
+            overflow: hidden;
+        }
+        .background
+        {
+            background: linear-gradient(94.79deg, rgba(72, 85, 99, 0.9) 12.79%, rgba(41, 50, 60, 0.9) 112.24%);
+            border-radius: 4px;
+            left:10px;
+            top:700px;
+            position: relative;
+            width: 250px;
+            height: 60px;
+            animation: fade2 1s 5s forwards;
+            margin-top: -125px;
+        }
+        .text-head
+        {
+            color: white;
+            font-family:  TT Norms;
+            font-size: 13px;
+            left:34px;
+            top:-18px;
+            position: relative;
+            animation: fade2 1s 5s forwards;
+        }
+        .text-second
+        {
+            color: rgb(184, 184, 184);
+            font-family:  TT Norms;
+            font-size: 12px;
+            left:5px;
+            top:-28px;
+            position: relative;   
+            animation: fade2 1s 5s forwards;
+        }
+        .icon
+        {
+            top: 5px;
+            left:10px;
+            position: relative;
+        }
+        @keyframes fade1 {
+        0% {
+            opacity: 1;
+        }
+        99% {
+            opacity: 0;
+            height: 200px;
+            width: 200px;
+        }
+        100% {
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+        }
+
+        @keyframes fade2 {
+        0% {
+            opacity: 1;
+            visibility: visible;
+        }
+        99% {
+            opacity: 0;
+            visibility: hidden;
+            position: relative;
+        }
+        100% {
+            opacity: 0;
+            position: fixed;
+        }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="append" class="main">
+        <!--<div class="background">
+            <div class="icon">
+                <img src="https://img.icons8.com/officel/20/000000/help.png">
+                <img src="https://img.icons8.com/color/20/000000/help--v1.png"> 
+            </div>
+            <a id="head" class="text-head">
+                Тут заголовок уведомления
+            </a>
+            <p id="second" class="text-second">Я вмещаю сюда очень большой текст, а вы так не можете ведь вы не адаптированы</p>
+        </div>-->
+    </div>
+
+<script>
+    cef.on("data:not", (heads, seconds) => {
+        addnot(heads, seconds);
+    });
+
+
+    function addnot(heads, seconds) {
+           let div =  document.createElement('div');
+           div.className = "background";
+
+           let icon = document.createElement('div');
+           icon.className = "icon";
+           div.append(icon);
+
+           let img = document.createElement('img');
+           img.src = "https://img.icons8.com/officel/20/000000/help.png";
+           icon.append(img);
+
+
+           let a1 = document.createElement('a');
+
+           a1.className = "text-head";
+           a1.innerHTML = heads;
+           div.append(a1);
+
+           let p2 = document.createElement('p');
+
+           p2.className = "text-second";
+           p2.innerHTML = seconds;
+           div.append(p2);
+
+           let app = document.getElementById('append');
+
+           app.append(div);
+    }
+</script>
+</body>
